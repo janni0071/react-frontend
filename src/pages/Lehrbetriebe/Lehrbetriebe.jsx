@@ -53,7 +53,7 @@ function Lehrbetriebe() {
                                 <div className='actions'>
                                     <Link to={`/lehrbetrieb-anpassen/${id_lehrbetrieb}`}>Bearbeiten</Link>
                                     <p>|</p>
-                                    <button className='link' onClick={() => handleDelete(id_lehrbetrieb)}><span>Löschen</span></button>
+                                    <button className='link' onClick={() => handleDelete(id_lehrbetrieb)}>Löschen</button>
                                 </div>
                             </div>
                         ))}

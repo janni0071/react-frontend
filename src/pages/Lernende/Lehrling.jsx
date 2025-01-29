@@ -40,7 +40,7 @@ const Lehrling = () => {
             }
             {!loading && !error && data && (
                 <div key={data.id_lernende}>
-                    <h2>{data.vorname}{data.nachname}</h2>
+                    <h2>{data.vorname} {data.nachname}</h2>
                     <p className='street'>{data.strasse || 'Keine Strasse vorhanden, diese Person lebt als Eremit fernab von jeglicher Zivilisation (⊙ˍ⊙)'}</p>
                     <div className='address'>
                         <span>{data.plz || 'Keine PLZ vorhanden, Post war gestern!'}</span>
@@ -51,7 +51,7 @@ const Lehrling = () => {
                     <p className='telefon'>{data.telefon || 'Wir leben im 21. Jahrhundert, KEINE SAU hat Festnetz :P'}</p>
                     <p className='handy'>{data.handy || 'Kein Handy vorhanden... Offenbar ist JEMAND noch nicht im aktuellen Jahrhundert angekommen w(ﾟДﾟ)w'}</p>
                     <p className='email'>{data.email || 'Keine Email vorhanden, im Lehrbetrieb wird nur über Whatsapp-Gruppen kommuniziert.'}</p>
-                    <p className='email_privat'>{data.email_privat || 'Keine private Email vorhanden, jemand will absolut KEINE Newsletter bekommen.'}</p>
+                    <p className='email_privat'>{data.email_privat || 'Keine private Email vorhanden, jemand will wohl absolut KEINE Newsletter bekommen.'}</p>
                     <p className='birthdate'>{data.birthdate || 'Kein Geburtsdatum vorhanden, diese Person wurde im Labor zusammengebastelt.'}</p>
                     <div className='actions'>
                         <Link to={`/lehrling-anpassen/${data.id_lernende}`}>Bearbeiten</Link>

@@ -17,18 +17,38 @@ function LehrlingAnpassen() {
     const [strasse, setStrasse] = useState('');
     const [plz, setPlz] = useState('');
     const [ort, setOrt] = useState('');
+    const [fk_land, setLand] = useState('');
     const [geschlecht, setGeschlecht] = useState('');
     const [telefon, setTelefon] = useState('');
     const [handy, setHandy] = useState('');
     const [email, setEmail] = useState('');
     const [email_privat, setEmailPrivat] = useState('');
     const [birthdate, setBirthdate] = useState('');
+    const [countries, setCountries] = useState([]);
 
     // 1) Fetch existing data so we can fill the form fields
     useEffect(() => {
         // We fetch once upon mount (or when `id` changes)
         doRequest({ url: `https://api.test/lernende/${id}` });
     }, [doRequest, id]);
+
+    // Fetch countries on mount
+    useEffect(() => {
+        const fetchCountries = async () => {
+            const result = await doRequest({
+                url: 'https://api.test/laender',
+                method: 'GET',
+            });
+
+            if (result.success) {
+                setCountries(result.data);
+            } else {
+                console.error('Failed to fetch countries:', result.error);
+            }
+        };
+
+        fetchCountries();
+    }, [doRequest]);
 
     // 2) Whenever `data` updates, sync local state (if data is loaded successfully)
     useEffect(() => {
@@ -38,6 +58,7 @@ function LehrlingAnpassen() {
             setStrasse(data.strasse || '');
             setPlz(data.plz || '');
             setOrt(data.ort || '');
+            setLand(data.countries || '');
             setGeschlecht(data.geschlecht || '');
             setTelefon(data.telefon || '');
             setHandy(data.handy || '');
@@ -52,7 +73,7 @@ function LehrlingAnpassen() {
         const result = await doRequest({
             url: `https://api.test/lernende/${id}`,
             method: 'PUT',
-            body: { vorname, nachname, strasse, plz, ort, geschlecht, telefon, handy, email, email_privat, birthdate },
+            body: { vorname, nachname, strasse, plz, ort, countries, geschlecht, telefon, handy, email, email_privat, birthdate },
         });
 
         if (result.success) {
@@ -118,6 +139,15 @@ function LehrlingAnpassen() {
                 value={ort}
                 onChange={(e) => setOrt(e.target.value)}
             />
+
+            {/* Country Selection Dropdown */}
+            <label htmlFor="fk_land">Land *</label>
+            <select id="fk_land" value={fk_land} onChange={(e) => setLand(e.target.value)}>
+                <option value="">-- Wähle ein Land --</option>
+                {countries.map((country) => (
+                    <option key={country.id_countries} value={country.id_countries}>{country.country}</option>
+                ))}
+            </select>
 
             <LabelInput
                 label="Geschlecht"

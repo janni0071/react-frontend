@@ -29,7 +29,7 @@ function App() {
                     <Route path="lernende" element={<Lernende />} />
                     <Route path="lernende/:id" element={<Lehrling />} />
                     <Route path="lehrling-erstellen" element={<LehrlingErstellen />} />
-                    <Route path="lehrling-anpassen/:id" element={<LehrlingAnpassen />} />
+                    <Route path="/lehrling-anpassen/:id" element={<LehrlingAnpassen />} />
 
                     {/* The 404 Route */}
                     <Route path="*" element={<NotFound />} />

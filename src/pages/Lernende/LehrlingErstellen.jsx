@@ -70,6 +70,7 @@ function LehrlingErstellen() {
             setPlz('');
             setOrt('');
             setLand('');
+            setCountries('');
             setGeschlecht('');
             setTelefon('');
             setHandy('');
@@ -93,29 +94,23 @@ function LehrlingErstellen() {
                 </div>
             }
             {message && <p>{message}</p>}
-            {error && Object.keys(error).length > 0 && (
-                <div>
-                    {Object.entries(error).map(([field, errMsg], index) => (
-                        <p className='error' key={index}>{`${errMsg}`}</p>
-                    ))}
-                </div>
-            )}
+            
 
             <LabelInput
-                label="Vorname"
+                label="Vorname *"
                 id="vorname"
                 value={vorname}
                 onChange={(e) => setVorname(e.target.value)}
             />
-            {/* {error?.vorname && <p className="error">{error.vorname}</p>} */}
+            {error?.vorname && <p className="error">{error.vorname}</p>}
 
             <LabelInput
-                label="Nachname"
+                label="Nachname *"
                 id="nachname"
                 value={nachname}
                 onChange={(e) => setNachname(e.target.value)}
             />
-            {/* {error?.nachname && <p className="error">{error.nachname}</p>} */}
+            {error?.nachname && <p className="error">{error.nachname}</p>}
 
             <LabelInput
                 label="Strasse"
@@ -145,7 +140,7 @@ function LehrlingErstellen() {
             {error?.ort && <p className="error">{error.ort}</p>}
 
             {/* Country Selection Dropdown */}
-            <label htmlFor="fk_land">Land</label>
+            <label htmlFor="fk_land">Land *</label>
             <select id="fk_land" value={fk_land} onChange={(e) => setLand(e.target.value)}>
                 <option value="">-- Wähle ein Land --</option>
                 {countries.map((country) => (
@@ -195,7 +190,7 @@ function LehrlingErstellen() {
             {error?.email_privat && <p className="error">{error.email_privat}</p>}
 
             <LabelInput
-                label="Geburtsdatum"
+                label="Geburtsdatum *"
                 id="birthdate"
                 value={birthdate}
                 type="date" // Ensures correct format (YYYY-MM-DD) in browser

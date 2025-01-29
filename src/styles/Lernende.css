@@ -1,4 +1,4 @@
-p.street, div.address, p.geschlecht, p.telefon, p.handy, p.email, p.email_privat, p.birthdate > span, a, button.link > span {
+p.street, div.address, p.land, p.geschlecht, p.telefon, p.handy, p.email, p.email_privat, p.birthdate > span, a, button.link > span {
     font-size: var(--font-size-small);
 }
 div.actions {
