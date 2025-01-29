@@ -43,7 +43,9 @@ function Lernende() {
                     <>
                         {data.map(({ id_lernende, vorname, nachname, strasse, plz, ort, fk_land, geschlecht, telefon, handy, email, email_privat, birthdate }) => (
                             <div key={id_lernende}>
-                                <h2><Link to={`/lernende/${id_lernende}`}>{vorname} {nachname}</Link></h2>                
+                                <h2><Link to={`/lernende/${id_lernende}`}><h6>{vorname} {nachname}</h6></Link></h2>
+                                <p className='geschlecht'>{geschlecht || 'Kein Geschlecht vorhanden, diese Person ist ein ALIEN OMG (⊙_(⊙_⊙)_⊙)'}</p>
+                                <p className='birthdate'>{birthdate || 'Kein Geburtsdatum vorhanden, diese Person wurde im Labor zusammengebastelt.'}</p>
                                 <p className='street'>{strasse || 'Keine Strasse vorhanden, diese Person lebt als Eremit fernab von jeglicher Zivilisation (⊙ˍ⊙)'}</p>
                                 <div className='address'>
                                     <span>{plz || 'Keine PLZ vorhanden, Post war gestern!'}</span>
@@ -51,12 +53,10 @@ function Lernende() {
                                     <span>{ort || 'Kein Ort vorhanden, diese Person will NICHT gefunden werden!!!'}</span>
                                 </div>
                                 <p className='land'>{fk_land || 'Kein Land vorhanden, diese Person ist entweder Pirat oder wohnt in der Antarktis...oder beides.'}</p>
-                                <p className='geschlecht'>{geschlecht || 'Kein Geschlecht vorhanden, diese Person ist ein ALIEN OMG (⊙_(⊙_⊙)_⊙)'}</p>
                                 <p className='telefon'>{telefon || 'Wir leben im 21. Jahrhundert, KEINE SAU hat Festnetz :P'}</p>
                                 <p className='handy'>{handy || 'Kein Handy vorhanden... Offenbar ist JEMAND noch nicht im aktuellen Jahrhundert angekommen w(ﾟДﾟ)w'}</p>
                                 <p className='email'>{email || 'Keine Email vorhanden, im Lehrbetrieb wird nur über Whatsapp-Gruppen kommuniziert.'}</p>
                                 <p className='email_privat'>{email_privat || 'Keine private Email vorhanden, jemand will wohl absolut KEINE Newsletter bekommen.'}</p>
-                                <p className='birthdate'>{birthdate || 'Kein Geburtsdatum vorhanden, diese Person wurde im Labor zusammengebastelt.'}</p>
                                 <div className='actions'>
                                     <Link to={`/lehrling-anpassen/${id_lernende}`}>Bearbeiten</Link>
                                     <p>|</p>
