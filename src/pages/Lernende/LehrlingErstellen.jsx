@@ -1,5 +1,5 @@
 // src/pages/lehrbetriebe/LehrbetriebErstellen.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +21,25 @@ function LehrlingErstellen() {
     const [email, setEmail] = useState('');
     const [email_privat, setEmailPrivat] = useState('');
     const [birthdate, setBirthdate] = useState('');
+    const [countries, setCountries] = useState([]);
+
+    // Fetch countries on mount
+    useEffect(() => {
+        const fetchCountries = async () => {
+            const result = await doRequest({
+                url: 'https://api.test/laender',
+                method: 'GET',
+            });
+
+            if (result.success) {
+                setCountries(result.data);
+            } else {
+                console.error('Failed to fetch countries:', result.error);
+            }
+        };
+
+        fetchCountries();
+    }, [doRequest]);
 
     // Handler for creating a new Lehrbetrieb
     const handleCreate = async () => {
@@ -125,13 +144,14 @@ function LehrlingErstellen() {
             />
             {error?.ort && <p className="error">{error.ort}</p>}
 
-            <LabelInput
-                label="Land"
-                id="fk_land"
-                type="number"
-                value={fk_land}
-                onChange={(e) => setLand(e.target.value)}
-            />
+            {/* Country Selection Dropdown */}
+            <label htmlFor="fk_land">Land</label>
+            <select id="fk_land" value={fk_land} onChange={(e) => setLand(e.target.value)}>
+                <option value="">-- Wähle ein Land --</option>
+                {countries.map((country) => (
+                    <option key={country.id_countries} value={country.id_countries}>{country.country}</option>
+                ))}
+            </select>
             {error?.fk_land && <p className="error">{error.fk_land}</p>}
 
             <LabelInput
@@ -178,6 +198,7 @@ function LehrlingErstellen() {
                 label="Geburtsdatum"
                 id="birthdate"
                 value={birthdate}
+                type="date" // Ensures correct format (YYYY-MM-DD) in browser
                 onChange={(e) => setBirthdate(e.target.value)}
             />
             {error?.birthdate && <p className="error">{error.birthdate}</p>}
