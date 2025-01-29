@@ -48,7 +48,7 @@ const Lehrbetrieb = () => {
                         <span>{data.ort || 'Kein Ort vorhanden'}</span>
                     </div>
                     <div className='actions'>
-                        <Link to={`/lehrbetrieb-anpassen`}>Bearbeiten</Link>
+                        <Link to={`/lehrbetrieb-anpassen/${data.id_lehrbetrieb}`}>Bearbeiten</Link>
                         <p>|</p>
                         <button className='link' onClick={() => handleDelete(data.id_lehrbetrieb)}><span>Löschen</span></button>
                     </div>

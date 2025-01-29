@@ -11,6 +11,10 @@ const Header = () => {
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/lehrbetriebe">Lehrbetriebe</Link>
+                <Link to="/lernende">Lernende</Link>
+                <Link to="/dozenten">Dozenten</Link>
+                <Link to="/kurse">Kurse</Link>
+                <Link to="/laender">Länder</Link>
             </nav>
         </header>
     )

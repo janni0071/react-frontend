@@ -1,0 +1,9 @@
+p.street, div.address, p.geschlecht, p.telefon, p.handy, p.email, p.email_privat, p.birthdate > span, a, button.link > span {
+    font-size: var(--font-size-small);
+}
+div.actions {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-items: center;
+    gap: calc(.5 * var(--default-gap));
+}

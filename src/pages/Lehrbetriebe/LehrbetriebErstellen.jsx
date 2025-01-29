@@ -2,9 +2,11 @@
 import { useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';
+import { useNavigate } from 'react-router-dom';
 
 function LehrbetriebErstellen() {
     const { loading, error, message, doRequest } = useApi();
+    const navigate = useNavigate();
 
     // Local states for each field in tbl_lehrbetrieb
     const [firma, setFirma] = useState('');
@@ -32,6 +34,7 @@ function LehrbetriebErstellen() {
             setPlz('');
             setOrt('');
             console.log('Created Lehrbetrieb:', result.data);
+            navigate(`/lehrbetriebe`);
         } else {
             console.error('Create failed:', result.error);
         }
@@ -46,7 +49,7 @@ function LehrbetriebErstellen() {
                     <div></div>
                 </div>
             }
-            {message && <p>{message}</p>}
+            {/* {message && <p>{message}</p>} */}
             {error && Object.keys(error).length > 0 && (
                 <div>
                     {Object.entries(error).map(([field, errMsg], index) => (
