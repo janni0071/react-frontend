@@ -21,6 +21,7 @@ function App() {
                     <Route path="lehrbetriebe/:id" element={<Lehrbetrieb />} />
                     <Route path="lehrbetrieb-erstellen" element={<LehrbetriebErstellen />} />
                     <Route path="/lehrbetrieb-anpassen/:id" element={<LehrbetriebAnpassen />} />
+                    <Route path="/lehrbetrieb-anpassen" element={<LehrbetriebAnpassen />} />
 
                     {/* The 404 Route */}
                     <Route path="*" element={<NotFound />} />
