@@ -320,7 +320,8 @@ form {
 }
 
 input,
-textarea {
+textarea,
+select {
   display: block;
   width: 100%;;
 
