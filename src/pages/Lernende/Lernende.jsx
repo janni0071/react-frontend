@@ -60,7 +60,7 @@ function Lernende() {
                                 <div className='actions'>
                                     <Link to={`/lehrling-anpassen/${id_lernende}`}>Bearbeiten</Link>
                                     <p>|</p>
-                                    <button className='link' onClick={() => handleDelete(id_lernende)}>Löschen</button>
+                                    <Link className='link' onClick={() => handleDelete(id_lernende)}>Löschen</Link>
                                 </div>
                             </div>
                         ))}

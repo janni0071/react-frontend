@@ -50,7 +50,7 @@ const Lehrbetrieb = () => {
                     <div className='actions'>
                         <Link to={`/lehrbetrieb-anpassen/${data.id_lehrbetrieb}`}>Bearbeiten</Link>
                         <p>|</p>
-                        <button className='link' onClick={() => handleDelete(data.id_lehrbetrieb)}><span>Löschen</span></button>
+                        <Link className='link' onClick={() => handleDelete(data.id_lehrbetrieb)}>Löschen</Link>
                     </div>
                 </div>
             )}

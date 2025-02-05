@@ -56,7 +56,7 @@ const Lehrling = () => {
                     <div className='actions'>
                         <Link to={`/lehrling-anpassen/${data.id_lernende}`}>Bearbeiten</Link>
                         <p>|</p>
-                        <button className='link' onClick={() => handleDelete(data.id_lernende)}><span>Löschen</span></button>
+                        <Link className='link' onClick={() => handleDelete(data.id_lernende)}>Löschen</Link>
                     </div>
                 </div>
             )}
