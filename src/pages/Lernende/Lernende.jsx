@@ -43,7 +43,7 @@ function Lernende() {
                     <>
                         {data.map(({ id_lernende, vorname, nachname, strasse, plz, ort, fk_land, geschlecht, telefon, handy, email, email_privat, birthdate }) => (
                             <div key={id_lernende}>
-                                <h2><Link to={`/lernende/${id_lernende}`}><h6>{vorname} {nachname}</h6></Link></h2>
+                                <h2><Link to={`/lernende/${id_lernende}`}>{vorname} {nachname}</Link></h2>
                                 <p className='geschlecht'>{geschlecht || 'Kein Geschlecht vorhanden, diese Person ist ein ALIEN OMG (⊙_(⊙_⊙)_⊙)'}</p>
                                 <p className='birthdate'>{birthdate || 'Kein Geburtsdatum vorhanden, diese Person wurde im Labor zusammengebastelt.'}</p>
                                 <p className='street'>{strasse || 'Keine Strasse vorhanden, diese Person lebt als Eremit fernab von jeglicher Zivilisation (⊙ˍ⊙)'}</p>
