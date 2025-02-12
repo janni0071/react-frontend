@@ -122,7 +122,7 @@ function KursAnpassen() {
             <select id="fk_dozent" value={fk_dozent} onChange={(e) => setDozent(e.target.value)}>
                 <option value="">-- Wähle einen Dozenten --</option>
                 {dozenten.map((dozent) => (
-                    <option key={dozent.id_dozent} value={dozent.id_dozent}>{dozent.nachname}</option>
+                    <option key={dozent.id_dozent} value={dozent.id_dozent}>{dozent.vorname} {dozent.nachname}</option>
                 ))}
             </select>
 
