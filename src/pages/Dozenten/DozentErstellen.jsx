@@ -1,4 +1,5 @@
-// src/pages/lehrbetriebe/LehrbetriebErstellen.jsx
+// src/pages/Dozenten/DozentErstellen.jsx
+
 import { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';
@@ -8,7 +9,7 @@ function DozentErstellen() {
     const { loading, error, message, doRequest } = useApi();
     const navigate = useNavigate();
 
-    // Local states for each field in tbl_lehrbetrieb
+    // Local states for each field in tbl_dozenten
     const [vorname, setVorname] = useState('');
     const [nachname, setNachname] = useState('');
     const [strasse, setStrasse] = useState('');
@@ -40,7 +41,7 @@ function DozentErstellen() {
         fetchCountries();
     }, [doRequest]);
 
-    // Handler for creating a new Lehrbetrieb
+    // Handler for creating a new Dozent
     const handleCreate = async () => {
         const result = await doRequest({
             url: 'https://api.test/dozenten',

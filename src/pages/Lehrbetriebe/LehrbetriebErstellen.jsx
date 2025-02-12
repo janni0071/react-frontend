@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebErstellen.jsx
+// src/pages/Lehrbetriebe/LehrbetriebErstellen.jsx
 import { useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';

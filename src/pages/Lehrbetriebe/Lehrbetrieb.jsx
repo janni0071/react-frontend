@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/ReadLehrbetrieb.js
+// src/pages/Lehrbetriebe/Lehrbetrieb.jsx
 
 import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';

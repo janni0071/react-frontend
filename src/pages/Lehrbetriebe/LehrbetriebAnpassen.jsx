@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebAnpassen.jsx
+// src/pages/Lehrbetriebe/LehrbetriebAnpassen.jsx
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';

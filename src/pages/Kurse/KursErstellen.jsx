@@ -1,4 +1,5 @@
-// src/pages/lehrbetriebe/LehrbetriebErstellen.jsx
+// src/pages/Kurse/KursErstellen.jsx
+
 import { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';
@@ -8,7 +9,7 @@ function KursErstellen() {
     const { loading, error, message, doRequest } = useApi();
     const navigate = useNavigate();
 
-    // Local states for each field in tbl_lehrbetrieb
+    // Local states for each field in tbl_kurse
     const [kursnummer, setKursnummer] = useState('');
     const [kursthema, setKursthema] = useState('');
     const [inhalt, setInhalt] = useState('');
@@ -18,7 +19,7 @@ function KursErstellen() {
     const [dauer, setDauer] = useState('');
     const [dozenten, setDozenten] = useState([]);
 
-    // Fetch countries on mount
+    // Fetch dozenten on mount
     useEffect(() => {
         const fetchDozenten = async () => {
             const result = await doRequest({
@@ -36,7 +37,7 @@ function KursErstellen() {
         fetchDozenten();
     }, [doRequest]);
 
-    // Handler for creating a new Lehrbetrieb
+    // Handler for creating a new Kurs
     const handleCreate = async () => {
         const result = await doRequest({
             url: 'https://api.test/kurse',
@@ -106,7 +107,7 @@ function KursErstellen() {
             />
             {error?.inhalt && <p className="error">{error.inhalt}</p>}
 
-            {/* Country Selection Dropdown */}
+            {/* Dozent Selection Dropdown */}
             <label htmlFor="fk_dozent">Dozent *</label>
             <select id="fk_dozent" value={fk_dozent} onChange={(e) => setDozent(e.target.value)}>
                 <option value="">-- Wähle einen Dozenten --</option>

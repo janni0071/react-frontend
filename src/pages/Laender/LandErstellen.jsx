@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebErstellen.jsx
+// src/pages/Laender/LandErstellen.jsx
 import { useState } from 'react';
 import { useApi } from '../../hooks/useApi';
 import LabelInput from '../../components/LabelInput';
@@ -8,10 +8,10 @@ function LandErstellen() {
     const { loading, error, message, doRequest } = useApi();
     const navigate = useNavigate();
 
-    // Local states for each field in tbl_lehrbetrieb
+    // Local states for each field in tbl_countries
     const [country, setLand] = useState('');
 
-    // Handler for creating a new Lehrbetrieb
+    // Handler for creating a new Land
     const handleCreate = async () => {
         const result = await doRequest({
             url: 'https://api.test/laender',

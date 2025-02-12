@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/ReadLehrbetrieb.js
+// src/pages/Kurse/Kurs.jsx
 
 import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
@@ -10,14 +10,14 @@ const Kurs = () => {
     const navigate = useNavigate();
     const { data, error, loading, doRequest } = useApi();
 
-    // Fetch the Lehrbetrieb once the component mounts or the id changes
+    // Fetch the Kurs once the component mounts or the id changes
     useEffect(() => {
         doRequest({ url: `https://api.test/kurse/${id}` });
     }, [doRequest, id]);
 
     const handleDelete = async (id) => {
         await doRequest({ url: `https://api.test/kurse/${id}`, method: 'DELETE' });
-        // Redirect to /Lehrbetriebe after deletion
+        // Redirect to /Kurse after deletion
         navigate('/kurse');
     };
 

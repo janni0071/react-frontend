@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebAnpassen.jsx
+// src/pages/Kurse/KursAnpassen.jsx
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ function KursAnpassen() {
     const navigate = useNavigate();
     const { data, error, loading, message, doRequest } = useApi();
 
-    // Local state mirrors the tbl_lehrbetrieb columns
+    // Local state mirrors the tbl_kurse columns
     const [kursnummer, setKursnummer] = useState('');
     const [kursthema, setKursthema] = useState('');
     const [inhalt, setInhalt] = useState('');
@@ -27,7 +27,7 @@ function KursAnpassen() {
         doRequest({ url: `https://api.test/kurse/${id}` });
     }, [doRequest, id]);
 
-    // Fetch countries on mount
+    // Fetch dozenten on mount
     useEffect(() => {
         const fetchDozenten = async () => {
             const result = await doRequest({
@@ -58,7 +58,7 @@ function KursAnpassen() {
         }
     }, [data]);
 
-    // 3) Handle the PUT request to update the Lehrbetrieb
+    // 3) Handle the PUT request to update the Kurs
     const handleUpdate = async () => {
         const result = await doRequest({
             url: `https://api.test/kurse/${id}`,
@@ -68,7 +68,7 @@ function KursAnpassen() {
 
         if (result.success) {
             console.log('Kurs updated:', result.data);
-            // Optionally redirect back to the Lehrbetrieb detail page
+            // Optionally redirect back to the Kurs detail page
             navigate(`/kurse/${id}`);
         } else {
             console.error('Update failed:', result.error);
@@ -117,7 +117,7 @@ function KursAnpassen() {
                 onChange={(e) => setInhalt(e.target.value)}
             />
 
-            {/* Country Selection Dropdown */}
+            {/* Dozent Selection Dropdown */}
             <label htmlFor="fk_dozent">Dozent *</label>
             <select id="fk_dozent" value={fk_dozent} onChange={(e) => setDozent(e.target.value)}>
                 <option value="">-- Wähle einen Dozenten --</option>

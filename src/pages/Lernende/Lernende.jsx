@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/Lehrbetriebe.js
+// src/pages/Lernende/Lernende.jsx
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ function Lernende() {
     const { data, error, loading, doRequest } = useApi();
 
     useEffect(() => {
-        // Fetch all Lehrbetriebe once the component mounts
+        // Fetch all Lernende once the component mounts
         doRequest({ url: 'https://api.test/lernende', method: 'GET' });
     }, [doRequest]);
 

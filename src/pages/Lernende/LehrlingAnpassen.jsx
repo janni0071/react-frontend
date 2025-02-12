@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebAnpassen.jsx
+// src/pages/Lernende/Lehrling.jsx
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ function LehrlingAnpassen() {
     const navigate = useNavigate();
     const { data, error, loading, message, doRequest } = useApi();
 
-    // Local state mirrors the tbl_lehrbetrieb columns
+    // Local state mirrors the tbl_lernende columns
     const [vorname, setVorname] = useState('');
     const [nachname, setNachname] = useState('');
     const [strasse, setStrasse] = useState('');
@@ -68,7 +68,7 @@ function LehrlingAnpassen() {
         }
     }, [data]);
 
-    // 3) Handle the PUT request to update the Lehrbetrieb
+    // 3) Handle the PUT request to update the Lehrling
     const handleUpdate = async () => {
         const result = await doRequest({
             url: `https://api.test/lernende/${id}`,
@@ -78,7 +78,7 @@ function LehrlingAnpassen() {
 
         if (result.success) {
             console.log('Lehrling updated:', result.data);
-            // Optionally redirect back to the Lehrbetrieb detail page
+            // Optionally redirect back to the Lehrling detail page
             navigate(`/lernende/${id}`);
         } else {
             console.error('Update failed:', result.error);

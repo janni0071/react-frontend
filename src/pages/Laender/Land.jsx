@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/ReadLehrbetrieb.js
+// src/pages/Laender/Land.jsx
 
 import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
@@ -10,14 +10,14 @@ const Land = () => {
     const navigate = useNavigate();
     const { data, error, loading, doRequest } = useApi();
 
-    // Fetch the Lehrbetrieb once the component mounts or the id changes
+    // Fetch the Land once the component mounts or the id changes
     useEffect(() => {
         doRequest({ url: `https://api.test/laender/${id}` });
     }, [doRequest, id]);
 
     const handleDelete = async (id) => {
         await doRequest({ url: `https://api.test/laender/${id}`, method: 'DELETE' });
-        // Redirect to /Lehrbetriebe after deletion
+        // Redirect to /Laender after deletion
         navigate('/laender');
     };
 

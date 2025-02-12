@@ -1,4 +1,4 @@
-// src/pages/lehrbetriebe/LehrbetriebAnpassen.jsx
+// src/pages/Dozenten/DozentAnpassen.jsx
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -11,7 +11,7 @@ function DozentAnpassen() {
     const navigate = useNavigate();
     const { data, error, loading, message, doRequest } = useApi();
 
-    // Local state mirrors the tbl_lehrbetrieb columns
+    // Local state mirrors the tbl_dozenten columns
     const [vorname, setVorname] = useState('');
     const [nachname, setNachname] = useState('');
     const [strasse, setStrasse] = useState('');
@@ -66,7 +66,7 @@ function DozentAnpassen() {
         }
     }, [data]);
 
-    // 3) Handle the PUT request to update the Lehrbetrieb
+    // 3) Handle the PUT request to update the Dozent
     const handleUpdate = async () => {
         const result = await doRequest({
             url: `https://api.test/dozenten/${id}`,
@@ -76,7 +76,7 @@ function DozentAnpassen() {
 
         if (result.success) {
             console.log('Dozent updated:', result.data);
-            // Optionally redirect back to the Lehrbetrieb detail page
+            // Optionally redirect back to the Dozent detail page
             navigate(`/dozenten/${id}`);
         } else {
             console.error('Update failed:', result.error);
