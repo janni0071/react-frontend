@@ -19,6 +19,8 @@ function Laender() {
         doRequest({ url: 'https://api.test/laender', method: 'GET' });
     };
 
+    const sortedData = data ? [...data].sort((a, b) => a.country.localeCompare(b.country)) : [];
+
     return (
         <>
             <h1>Länder</h1>
@@ -38,10 +40,10 @@ function Laender() {
                     <div></div>
                 </div>
             }
-            {!loading && !error && data?.length &&
+            {!loading && !error && sortedData.length &&
                 (
                     <>
-                        {data.map(({ id_countries, country }) => (
+                        {sortedData.map(({ id_countries, country }) => (
                             <div key={id_countries}>
                                 <h2><Link to={`/laender/${id_countries}`}><h6>{country}</h6></Link></h2>
                                 <div className='actions'>
@@ -54,7 +56,7 @@ function Laender() {
                     </>
                 )
             }
-            {!loading && !error && !data?.length &&
+            {!loading && !error && sortedData.length === 0 &&
                 (
                     <p>Es gibt noch keine Länder.</p>
                 )
