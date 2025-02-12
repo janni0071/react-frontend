@@ -117,45 +117,31 @@ function KursErstellen() {
             {error?.fk_dozent && <p className="error">{error.fk_dozent}</p>}
 
             <LabelInput
-                label="Geschlecht"
-                id="geschlecht"
-                value={geschlecht}
-                onChange={(e) => setGeschlecht(e.target.value)}
+                label="Startdatum"
+                id="startdatum"
+                value={startdatum}
+                type="date"
+                onChange={(e) => setStartdatum(e.target.value)}
             />
-            {error?.geschlecht && <p className="error">{error.geschlecht}</p>}
+            {error?.startdatum && <p className="error">{error.startdatum}</p>}
 
             <LabelInput
-                label="Telefon"
-                id="telefon"
-                value={telefon}
-                onChange={(e) => setTelefon(e.target.value)}
+                label="Enddatum"
+                id="enddatum"
+                value={enddatum}
+                type="date"
+                onChange={(e) => setEnddatum(e.target.value)}
             />
-            {error?.telefon && <p className="error">{error.telefon}</p>}
+            {error?.enddatum && <p className="error">{error.enddatum}</p>}
 
             <LabelInput
-                label="Handy"
-                id="handy"
-                value={handy}
-                onChange={(e) => setHandy(e.target.value)}
+                label="Dauer"
+                id="dauer"
+                value={dauer}
+                type="number"
+                onChange={(e) => setDauer(e.target.value)}
             />
-            {error?.handy && <p className="error">{error.handy}</p>}
-
-            <LabelInput
-                label="Email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            {error?.email && <p className="error">{error.email}</p>}
-
-            <LabelInput
-                label="Geburtsdatum *"
-                id="birthdate"
-                value={birthdate}
-                type="date" // Ensures correct format (YYYY-MM-DD) in browser
-                onChange={(e) => setBirthdate(e.target.value)}
-            />
-            {error?.birthdate && <p className="error">{error.birthdate}</p>}
+            {error?.dauer && <p className="error">{error.dauer}</p>}
 
             <button onClick={handleCreate} disabled={loading}>
                 {loading ? 'Creating...' : 'Create'}
@@ -164,4 +150,4 @@ function KursErstellen() {
     );
 }
 
-export default DozentErstellen;
+export default KursErstellen;

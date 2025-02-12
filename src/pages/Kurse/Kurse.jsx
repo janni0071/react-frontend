@@ -44,7 +44,7 @@ function Kurse() {
                         {data.map(({ id_kurs, kursnummer, kursthema, inhalt, fk_dozent, startdatum, enddatum, dauer }) => (
                             <div key={id_kurs}>
                                 <h2><Link to={`/kurse/${id_kurs}`}>{kursnummer} {kursthema}</Link></h2>
-                                <p className='inhalt'>{inhalt || 'Kein Inhalt vorhanden, in diesem Kurs wird gechillt! (￣o￣) . z Z'}</p>
+                                <p className='inhalt'>{inhalt || 'Kein Inhalt vorhanden, in diesem Kurs wird gechillt!! (￣o￣) . z Z'}</p>
                                 <p className='fk_dozent'>{fk_dozent || 'Kein Dozent vorhanden, das ist eine Selbsthilfegruppe.'}</p>
                                 <p className='startdatum'>{startdatum || 'Kein Startdatum vorhanden, wir fangen einfach an wenn alle da sind oder so b(￣▽￣)d'}</p>
                                 <p className='enddatum'>{enddatum || 'Kein Enddatum vorhanden, wir gehen einfach sobald es langweilig wird ( •̀ ω •́ )y'}</p>

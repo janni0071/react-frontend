@@ -19,6 +19,11 @@ import Dozent from './pages/Dozenten/Dozent';
 import DozentErstellen from './pages/Dozenten/DozentErstellen';
 import DozentAnpassen from './pages/Dozenten/DozentAnpassen';
 
+import Kurse from './pages/Kurse/Kurse';
+import Kurs from './pages/Kurse/Kurs';
+import KursErstellen from './pages/Kurse/KursErstellen';
+import KursAnpassen from './pages/Kurse/KursAnpassen';
+
 import Laender from './pages/Laender/Laender';
 import Land from './pages/Laender/Land';
 import LandErstellen from './pages/Laender/LandErstellen';
@@ -47,6 +52,11 @@ function App() {
                     <Route path="dozenten/:id" element={<Dozent />} />
                     <Route path="dozent-erstellen" element={<DozentErstellen />} />
                     <Route path="/dozent-anpassen/:id" element={<DozentAnpassen />} />
+
+                    <Route path="kurse" element={<Kurse />} />
+                    <Route path="kurse/:id" element={<Kurs />} />
+                    <Route path="kurs-erstellen" element={<KursErstellen />} />
+                    <Route path="/kurs-anpassen/:id" element={<KursAnpassen />} />
 
                     <Route path="laender" element={<Laender />} />
                     <Route path="laender/:id" element={<Land />} />
