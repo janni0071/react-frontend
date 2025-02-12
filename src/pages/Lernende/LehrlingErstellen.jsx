@@ -97,7 +97,7 @@ function LehrlingErstellen() {
                     <div></div>
                 </div>
             }
-            {message && <p>{message}</p>}
+            {/*message && <p>{message}</p>*/}
             
 
             <LabelInput

@@ -95,7 +95,7 @@ function DozentErstellen() {
                     <div></div>
                 </div>
             }
-            {message && <p>{message}</p>}
+            {/*message && <p>{message}</p>*/}
             
 
             <LabelInput
