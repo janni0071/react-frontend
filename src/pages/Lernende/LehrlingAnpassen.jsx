@@ -41,7 +41,11 @@ function LehrlingAnpassen() {
             });
 
             if (result.success) {
-                setCountries(result.data);
+                // Sort countries alphabetically by name
+                const sortedCountries = result.data.sort((a, b) => 
+                    a.country.localeCompare(b.country)
+                );
+                setCountries(sortedCountries);
             } else {
                 console.error('Failed to fetch countries:', result.error);
             }
