@@ -27,6 +27,9 @@ import Kurs from './pages/Kurse/Kurs';
 import KursErstellen from './pages/Kurse/KursErstellen';
 import KursAnpassen from './pages/Kurse/KursAnpassen';
 
+import KurseLernende from './pages/Kurse_Lernende/Kurse_Lernende';
+import KurseLernendeErstellen from './pages/Kurse_Lernende/Kurse_LernendeErstellen';
+
 import Laender from './pages/Laender/Laender';
 import Land from './pages/Laender/Land';
 import LandErstellen from './pages/Laender/LandErstellen';
@@ -63,6 +66,9 @@ function App() {
                     <Route path="kurse/:id" element={<Kurs />} />
                     <Route path="kurs-erstellen" element={<KursErstellen />} />
                     <Route path="/kurs-anpassen/:id" element={<KursAnpassen />} />
+
+                    <Route path="kurse_lernende" element={<KurseLernende />} />
+                    <Route path="kurse_lernende-erstellen" element={<KurseLernendeErstellen />} />
 
                     <Route path="laender" element={<Laender />} />
                     <Route path="laender/:id" element={<Land />} />

@@ -15,6 +15,7 @@ const Header = () => {
                 <Link to="/lehrbetrieb_lernende">Lehrbetrieb & Lernende</Link>
                 <Link to="/dozenten">Dozenten</Link>
                 <Link to="/kurse">Kurse</Link>
+                <Link to="/kurse_lernende">Kurse & Lernende</Link>
                 <Link to="/laender">Länder</Link>
             </nav>
         </header>

@@ -3,38 +3,37 @@ import { Link } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import '../../styles/Lehrbetriebe.css';
 
-function LehrbetriebeLernende() {
+function KurseLernende() {
     const { data, error, loading, doRequest } = useApi();
 
     useEffect(() => {
-        // Fetch all Lehrbetriebe with associated Lernende
-        doRequest({ url: 'https://api.test/lehrbetrieb_lernende', method: 'GET' });
+        // Fetch all Kurse with associated Lernende
+        doRequest({ url: 'https://api.test/kurse_lernende', method: 'GET' });
     }, [doRequest]);
 
     // Sicherstellen, dass groupedData ein leeres Objekt ist, falls data undefined oder null ist
     const groupedData = data?.reduce((acc, entry) => {
         if (!entry) return acc; // Falls entry undefiniert ist, einfach zurückgeben
     
-        const { fk_lehrbetrieb, firma, strasse, plz, ort, fk_lernende, vorname, nachname, start, ende, country } = entry;
+        const { fk_kurs, kursnummer, kursthema, inhalt, dozent, fk_lernende, vorname, nachname, role, country } = entry;
     
-        if (!acc[fk_lehrbetrieb]) {
-            acc[fk_lehrbetrieb] = {
-                id_lehrbetrieb: fk_lehrbetrieb,
-                firma,
-                strasse,
-                plz,
-                ort,
+        if (!acc[fk_kurs]) {
+            acc[fk_kurs] = {
+                id_kurs: fk_kurs,
+                kursnummer,
+                kursthema,
+                inhalt,
+                dozent,
                 lernende: []
             };
         }
     
         if (fk_lernende) {
-            acc[fk_lehrbetrieb].lernende.push({
+            acc[fk_kurs].lernende.push({
                 id_lernende: fk_lernende,
                 vorname,
                 nachname,
-                start,
-                ende,
+                role,
                 country
             });
         }
@@ -44,9 +43,9 @@ function LehrbetriebeLernende() {
 
     return (
         <>
-            <h1>Lehrbetriebe mit Lernenden</h1>
+            <h1>Kurse mit Lernenden</h1>
 
-            <Link to={`/lehrbetrieb_lernende-erstellen`}>Neuen Lehrbetrieb hinzufügen</Link>
+            <Link to={`/kurse_lernende-erstellen`}>Neuen Kurs hinzufügen</Link>
 
             {error && Object.keys(error).length > 0 && (
                 <div>
@@ -64,16 +63,16 @@ function LehrbetriebeLernende() {
 
             {!loading && !error && Object.keys(groupedData).length > 0 && (
                 <>
-                    {Object.values(groupedData).map(({ id_lehrbetrieb, firma, strasse, plz, ort, lernende }) => (
-                        <div key={id_lehrbetrieb} className="lehrbetrieb-card">
-                            <Link to={`/lehrbetriebe/${id_lehrbetrieb}`}><h6>{firma}</h6></Link>
-                            <p>{strasse}, {plz} {ort}</p>
+                    {Object.values(groupedData).map(({ id_kurs, kursnummer, kursthema, inhalt, dozent, lernende }) => (
+                        <div key={id_kurs} className="kurs-card">
+                            <Link to={`/kurse/${id_kurs}`}><h6>{kursnummer} {kursthema}</h6></Link>
+                            <p>{inhalt}, {dozent}</p>
                             {lernende.length > 0 ? (
                                 <ul>
-                                    {lernende.map(({ id_lernende, vorname, nachname, start, ende, country }) => (
+                                    {lernende.map(({ id_lernende, vorname, nachname, role, country }) => (
                                         <li key={id_lernende}>
                                             <Link to={`/lernende/${id_lernende}`}>{vorname} {nachname}</Link>
-                                            <p>Start: {start} | Ende: {ende}</p>
+                                            <p>Note: {role}</p>
                                             <p>Land: {country}</p>
                                         </li>
                                     ))}
@@ -82,7 +81,7 @@ function LehrbetriebeLernende() {
                                 <p>Keine Lernenden zugewiesen</p>
                             )}
                             <div className='actions'>
-                                <Link className='link' onClick={() => handleDelete(id_lehrbetrieb)}>Löschen</Link>
+                                <Link className='link' onClick={() => handleDelete(id_kurs)}>Löschen</Link>
                             </div>
                         </div>
                     ))}
@@ -90,10 +89,10 @@ function LehrbetriebeLernende() {
             )}
 
             {!loading && !error && Object.keys(groupedData).length === 0 && (
-                <p>Es gibt noch keine Lehrbetriebe mit Lernenden.</p>
+                <p>Es gibt noch keine Kurse mit Lernenden.</p>
             )}
         </>
     );
 }
 
-export default LehrbetriebeLernende;
+export default KurseLernende;
