@@ -66,7 +66,7 @@ function KurseLernende() {
                     {Object.values(groupedData).map(({ id_kurs, kursnummer, kursthema, inhalt, dozent, lernende }) => (
                         <div key={id_kurs} className="kurs-card">
                             <Link to={`/kurse/${id_kurs}`}><h6>{kursnummer} {kursthema}</h6></Link>
-                            <p>{inhalt}, {dozent}</p>
+                            <p>{inhalt} {dozent}</p>
                             {lernende.length > 0 ? (
                                 <ul>
                                     {lernende.map(({ id_lernende, vorname, nachname, role, country }) => (
