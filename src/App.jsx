@@ -9,6 +9,9 @@ import Lehrbetrieb from './pages/Lehrbetriebe/Lehrbetrieb';
 import LehrbetriebErstellen from './pages/Lehrbetriebe/LehrbetriebErstellen';
 import LehrbetriebAnpassen from './pages/Lehrbetriebe/LehrbetriebAnpassen';
 
+import LehrbetriebeLernende from './pages/Lehrbetrieb_Lernende/Lehrbetriebe_Lernende';
+import LehrbetriebLernendeErstellen from './pages/Lehrbetrieb_Lernende/Lehrbetriebe_LernendeErstellen';
+
 import Lernende from './pages/Lernende/Lernende';
 import Lehrling from './pages/Lernende/Lehrling';
 import LehrlingErstellen from './pages/Lernende/LehrlingErstellen';
@@ -42,6 +45,9 @@ function App() {
                     <Route path="lehrbetriebe/:id" element={<Lehrbetrieb />} />
                     <Route path="lehrbetrieb-erstellen" element={<LehrbetriebErstellen />} />
                     <Route path="/lehrbetrieb-anpassen/:id" element={<LehrbetriebAnpassen />} />
+
+                    <Route path="lehrbetrieb_lernende" element={<LehrbetriebeLernende />} />
+                    <Route path="lehrbetrieb_lernende-erstellen" element={<LehrbetriebLernendeErstellen />} />
 
                     <Route path="lernende" element={<Lernende />} />
                     <Route path="lernende/:id" element={<Lehrling />} />
