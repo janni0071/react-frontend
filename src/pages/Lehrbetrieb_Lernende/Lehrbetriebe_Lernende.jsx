@@ -66,7 +66,7 @@ function LehrbetriebeLernende() {
                 <>
                     {Object.values(groupedData).map(({ id_lehrbetrieb, firma, strasse, plz, ort, lernende }) => (
                         <div key={id_lehrbetrieb} className="lehrbetrieb-card">
-                            <h2><Link to={`/lehrbetriebe/${id_lehrbetrieb}`}>{firma}</Link></h2>
+                            <Link to={`/lehrbetriebe/${id_lehrbetrieb}`}><h6>{firma}</h6></Link>
                             <p>{strasse}, {plz} {ort}</p>
                             {lernende.length > 0 ? (
                                 <ul>

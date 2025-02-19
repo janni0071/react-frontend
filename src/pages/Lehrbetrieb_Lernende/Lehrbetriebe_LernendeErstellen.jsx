@@ -10,33 +10,56 @@ function LehrbetriebLernendeErstellen() {
 
     // Local states for each field in tbl_lehrbetrieb
     const [fk_lehrbetrieb, setLehrbetrieb] = useState('');
-    const [fk_lernende, setLernende] = useState('');
+    const [fk_lernende, setLehrling] = useState('');
     const [start, setStart] = useState('');
     const [ende, setEnde] = useState('');
     const [beruf, setBeruf] = useState('');
     const [lehrbetriebe, setLehrbetriebe] = useState([]);
+    const [lernende, setLernende] = useState([]);
 
     // Fetch lehrbetriebe on mount
-        useEffect(() => {
-            const fetchLehrbetriebe = async () => {
-                const result = await doRequest({
-                    url: 'https://api.test/lehrbetriebe',
-                    method: 'GET',
-                });
-    
-                if (result.success) {
-                    // Sort lehrbetriebe alphabetically by name
-                    const sortedLehrbetriebe = result.data.sort((a, b) => 
-                        a.lehrbetrieb.localeCompare(b.lehrbetrieb)
-                    );
-                    setLehrbetriebe(sortedLehrbetriebe);
-                } else {
-                    console.error('Failed to fetch Lehrbetriebe:', result.error);
-                }
-            };
-    
-            fetchLehrbetriebe();
-        }, [doRequest]);
+    useEffect(() => {
+        const fetchLehrbetriebe = async () => {
+            const result = await doRequest({
+                url: 'https://api.test/lehrbetriebe',
+                method: 'GET',
+            });
+
+            if (result.success) {
+                // Sort lehrbetriebe alphabetically by name
+                const sortedLehrbetriebe = result.data.sort((a, b) => 
+                    a.lehrbetrieb.localeCompare(b.lehrbetrieb)
+                );
+                setLehrbetriebe(sortedLehrbetriebe);
+            } else {
+                console.error('Failed to fetch Lehrbetriebe:', result.error);
+            }
+        };
+
+        fetchLehrbetriebe();
+    }, [doRequest]);
+
+    // Fetch lernende on mount
+    useEffect(() => {
+        const fetchLernende = async () => {
+            const result = await doRequest({
+                url: 'https://api.test/lernende',
+                method: 'GET',
+            });
+
+            if (result.success) {
+                // Sort lernende alphabetically by name
+                const sortedLernende = result.data.sort((a, b) => 
+                    a.lehrling.localeCompare(b.lehrling)
+                );
+                setLernende(sortedLernende);
+            } else {
+                console.error('Failed to fetch Lernende:', result.error);
+            }
+        };
+
+        fetchLernende();
+    }, [doRequest]);
     
     // Handler for creating a new Lehrbetrieb
     const handleCreate = async () => {
@@ -56,7 +79,7 @@ function LehrbetriebLernendeErstellen() {
             // Optionally clear fields after success
             setLehrbetrieb('');
             setLehrbetriebe('');
-            setLernende('');
+            setLehrling('');
             setStart('');
             setEnde('');
             setBeruf('');
@@ -87,14 +110,15 @@ function LehrbetriebLernendeErstellen() {
             </select>
             {error?.fk_lehrbetrieb && <p className="error">{error.fk_lehrbetrieb}</p>}
 
-            <LabelInput
-                label="Lernende"
-                id="fk_lernende"
-                type="number"
-                value={fk_lernende}
-                onChange={(e) => setLernende(e.target.value)}
-            />
-            {error?.fk_lehrbetrieb && <p className="error">{error.fk_lernende}</p>}
+            {/* Lehrling Selection Dropdown */}
+            <label htmlFor="fk_lernende">Lernende *</label>
+            <select id="fk_lernende" value={fk_lernende} onChange={(e) => setLehrling(e.target.value)}>
+                <option value="">-- Wähle eine/n Lernende/n --</option>
+                {lernende.map((lehrling) => (
+                    <option key={lehrling.id_lernende} value={lehrling.id_lernende}>{lehrling.vorname} {lehrling.nachname}</option>
+                ))}
+            </select>
+            {error?.fk_lernende && <p className="error">{error.fk_lernende}</p>}
 
             <LabelInput
                 label="Start"
